@@ -6,8 +6,10 @@ Escreva sua solucao no lugar do 'pass'.
 
 
 def soma_lista(lista):
-    """Devolve a soma de todos os numeros da lista. Lista vazia devolve 0."""
-    pass
+ soma = 0
+    for numero in lista:
+        soma += numero
+        return soma
 
 
 def conta_pares(lista):
