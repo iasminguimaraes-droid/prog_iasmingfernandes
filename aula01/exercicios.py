@@ -13,25 +13,49 @@ def soma_lista(lista):
 
 
 def conta_pares(lista):
-    """Devolve quantos numeros da lista sao pares."""
-    pass
+  contador = 0
+  for num in lista:
+    if num % 2 == 0:
+      contador += 1
+  return contador
+
 
 
 def maior_valor(lista):
-    """Devolve o maior numero da lista. A lista nao esta vazia."""
-    pass
+    maior = lista[0]
+    for numero in lista:
+        if numero > maior:
+            maior = numero  
+    return maior
 
+  
 
 def existe(lista, alvo):
-    """Devolve True se o alvo esta na lista, False se nao esta."""
-    pass
+    for elemento in lista:
+        if elemento == alvo:
+            return True  
+    return False  
 
 
 def busca_linear(lista, alvo):
-    """Devolve a posicao do alvo na lista, ou -1 se ele nao estiver."""
-    pass
+    for i in range(len(lista)):
+        if lista[i] == alvo:
+            return i  
+    return -1 
+
 
 
 def segundo_maior(lista):
-    """(Desafio) Devolve o segundo maior, percorrendo a lista uma unica vez."""
-    pass
+  if len(lista) < 2:
+    return None
+  maior = float('-inf')
+  segundo = float('-inf')
+  for num in lista:
+    if num > maior:
+      segundo = maior
+      maior = num
+    elif num > segundo and num != maior:
+      segundo = num
+  if segundo == float('-inf'):
+    return None
+  return segundo
