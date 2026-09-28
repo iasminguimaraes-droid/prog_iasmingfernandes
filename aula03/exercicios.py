@@ -74,7 +74,22 @@ def quantas_divisoes(n):
 
 
 def mais_frequente_contando(lista):
-    """(Desafio) Devolve (valor, comparacoes).
-    O valor que mais aparece na lista. Em caso de empate, o que aparece
-    primeiro. Conte 1 comparacao cada vez que comparar dois elementos."""
-    pass
+    if not lista:
+        return (None, 0)
+        
+    frequencias = {}
+    comparacoes = 0
+    
+    
+    for x in lista:
+        comparacoes += 1
+        if x in frequencias:
+            frequencias[x] += 1
+        else:
+            frequencias[x] = 1
+            
+    
+    mais_freq_val = max(frequencias, key=frequencias.get)
+    
+    return (mais_freq_val, comparacoes)
+
