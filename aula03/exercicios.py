@@ -25,71 +25,23 @@ def soma_contando(lista):
 
 
 def busca_linear_contando(lista, alvo):
-    comparacoes = 0
-    for i, elemento in enumerate(lista):
-        comparacoes += 1
-        if elemento == alvo:
-            return i, comparacoes
-    return -1, comparacoes
-
+   
 
 
 def busca_binaria_contando(lista, alvo):
-    comparacoes = 0
-    esq = 0
-    dir = len(lista) - 1
-    
-    while esq <= dir:
-        meio = (esq + dir) // 2
-        
-        if lista[meio] == alvo:
-            return meio, comparacoes
-        elif lista[meio] < alvo:
-            esq = meio + 1
-        else:
-            dir = meio - 1
-            
-    return -1, comparacoes
+   
 
 
 
 def tem_repetido_contando(lista):
-    comparacoes = 0
-    for i in range(len(lista)):
-        for j in range(i):
-            comparacoes += 1
-            if lista[i] == lista[j]:
-                return (True, comparacoes)
-    return (False, comparacoes)
+  
 
 
 
 def quantas_divisoes(n):
-    contador = 0
-    while n > 1:
-        n = n // 2
-        contador += 1
-    return contador
+  
 
 
 
 def mais_frequente_contando(lista):
-    if not lista:
-        return (None, 0)
-        
-    frequencias = {}
-    comparacoes = 0
-    
-    
-    for x in lista:
-        comparacoes += 1
-        if x in frequencias:
-            frequencias[x] += 1
-        else:
-            frequencias[x] = 1
-            
-    
-    mais_freq_val = max(frequencias, key=frequencias.get)
-    
-    return (mais_freq_val, comparacoes)
-
+   
