@@ -33,13 +33,16 @@ def busca_binaria(lista, alvo):
 
 def intercala(lista_a, lista_b):
     lista_intercalada = []
-    
     for i in range(len(lista_a)):
         lista_intercalada.append(lista_a[i])
         lista_intercalada.append(lista_b[i])
-        
     return lista_intercalada
 
 
 def remove_repetidos(lista):
- 
+    lista_nova = []
+    for elemento in lista:
+        if elemento not in lista_nova:
+            lista_nova.append(elemento)
+    return lista_nova
+
