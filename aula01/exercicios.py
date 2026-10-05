@@ -6,11 +6,10 @@ Escreva sua solucao no lugar do 'pass'.
 
 
 def soma_lista(lista):
- soma = 0
-    for numero in lista:
-        soma += numero
-        return soma
-
+  soma = 0
+  for numero in lista:
+     soma += numero
+  return soma  
 
 def conta_pares(lista):
   contador = 0
@@ -46,16 +45,17 @@ def busca_linear(lista, alvo):
 
 
 def segundo_maior(lista):
-  if len(lista) < 2:
-    return None
-  maior = float('-inf')
-  segundo = float('-inf')
-  for num in lista:
-    if num > maior:
-      segundo = maior
-      maior = num
-    elif num > segundo and num != maior:
-      segundo = num
-  if segundo == float('-inf'):
-    return None
-  return segundo
+    if len(lista) < 2:
+        return None
+        
+    maior = float('-inf')
+    segundo = float('-inf')
+    
+    for num in lista:
+        if num >= maior:
+            segundo = maior
+            maior = num
+        elif num > segundo:
+            segundo = num
+            
+    return segundo if segundo != float('-inf') else None

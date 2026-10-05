@@ -25,23 +25,23 @@ def soma_contando(lista):
 
 
 def busca_linear_contando(lista, alvo):
-   
+   pass
 
 
 def busca_binaria_contando(lista, alvo):
-   
+   pass
 
 
 
 def tem_repetido_contando(lista):
-  
+  pass
 
 
 
 def quantas_divisoes(n):
-  
+  pass
 
 
 
 def mais_frequente_contando(lista):
-   
+   pass
