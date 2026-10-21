@@ -19,24 +19,41 @@ def conta_negativos(lista):
 
 def media(lista):
     """Media dos numeros. Lista vazia devolve 0."""
-    pass
+    if not lista:
+        return 0
+    return sum(lista) / len(lista)
 
 
 def sem_o_maior(lista):
     """Lista NOVA sem o maior valor. Se o maior repete, tira so o primeiro."""
-    pass
+    if not lista:
+        return []
+    
+    nova_lista = lista.copy()
+    maior_valor = max(nova_lista)
+    nova_lista.remove(maior_valor)
+    return nova_lista
 
 
 def acumulada(lista):
     """Lista NOVA onde cada posicao e a soma de tudo ate ali.
     acumulada([1, 2, 3]) -> [1, 3, 6]"""
-    pass
+    resultado = []
+    soma = 0
+    for num in lista:
+        soma += num
+        resultado.append(soma)
+    return resultado
 
 
 def achata(lista_de_listas):
     """(Desafio) Junta as sublistas numa lista so.
     achata([[1, 2], [3]]) -> [1, 2, 3]"""
-    pass
+    resultado = []
+    for sublista in lista_de_listas:
+        for elemento in sublista:
+            resultado.append(elemento)
+    return resultado
 
 
 # ---------- Bloco 2: busca ----------
