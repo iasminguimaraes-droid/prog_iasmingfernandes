@@ -57,6 +57,10 @@ def buscas_para_compensar(n, custo_ordenar):
         custo_ordenar + k * custo_binaria(n)  <  k * n
     Devolve -1 se nunca compensa.
     buscas_para_compensar(100, 10000) -> 108"""
+    custo_binaria = custo_binaria(n)
+       if custo_binaria >= n: return -1
+           k = custo_ordenar // (n - custo_binaria) + 1
+return k
    
 
 
