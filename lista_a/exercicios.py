@@ -60,74 +60,161 @@ def achata(lista_de_listas):
 
 def busca_ultima(lista, alvo):
     """ULTIMA posicao do alvo, ou -1."""
-    pass
+    for i in range(len(lista) - 1, -1, -1):
+        if lista[i] == alvo:
+            return i
+    return -1
 
 
 def conta_ocorrencias(lista, alvo):
     """Quantas vezes o alvo aparece."""
-    pass
+    contador = 0
+    for item in lista:
+        if item == alvo:
+            contador += 1
+    return contador
 
 
 def primeiro_maior_que(lista, limite):
     """Posicao do primeiro elemento maior que limite, ou -1."""
-    pass
+    for i, item in enumerate(lista):
+        if item > limite:
+            return i
+    return -1
 
 
 def busca_binaria_primeira(lista, alvo):
     """(Desafio) Lista JA ORDENADA, o alvo pode repetir.
     Devolve a PRIMEIRA posicao do alvo, ou -1. Sem percorrer tudo."""
-    pass
+    esq = 0
+    dir = len(lista) - 1
+    resultado = -1
+
+    while esq <= dir:
+        meio = (esq + dir) // 2
+        if lista[meio] == alvo:
+            resultado = meio
+            # Continua buscando na metade esquerda para achar a primeira ocorrencia
+            dir = meio - 1
+        elif lista[meio] < alvo:
+            esq = meio + 1
+        else:
+            dir = meio - 1
+
+    return resultado
 
 
 # ---------- Bloco 3: custo ----------
 
 def soma_pares_contando(lista):
     """(soma_dos_pares, operacoes). Conte 1 por elemento examinado."""
-    pass
+    soma = 0
+    operacoes = 0
+    for item in lista:
+        operacoes += 1
+        if item % 2 == 0:
+            soma += item
+    return (soma, operacoes)
 
 
 def maior_contando(lista):
     """(maior, comparacoes). Lista nao vazia.
     Conte 1 comparacao por elemento a partir do segundo."""
-    pass
+    maior = lista[0]
+    comparacoes = 0
+    for i in range(1, len(lista)):
+        comparacoes += 1
+        if lista[i] > maior:
+            maior = lista[i]
+    return (maior, comparacoes)
 
 
 def tem_soma_contando(lista, alvo):
     """(True/False, comparacoes). Existem dois elementos que somam alvo?
     Conte 1 por par comparado. Pare assim que achar."""
-    pass
+    n = len(lista)
+    comparacoes = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            comparacoes += 1
+            if lista[i] + lista[j] == alvo:
+                return (True, comparacoes)
+    return (False, comparacoes)
 
 
 def ordenada_contando(lista):
     """(Desafio) (True/False, comparacoes). A lista esta em ordem crescente?
     Conte 1 por par de vizinhos comparado. Pare no primeiro fora de ordem."""
-    pass
+    comparacoes = 0
+    for i in range(len(lista) - 1):
+        comparacoes += 1
+        if lista[i] > lista[i + 1]:
+            return (False, comparacoes)
+    return (True, comparacoes)
 
 
 # ---------- Bloco 4: padroes ----------
 
 def inverte_no_lugar(lista):
     """Inverte a PROPRIA lista recebida. NAO cria lista nova e NAO devolve nada."""
-    pass
+    esq = 0
+    dir = len(lista) - 1
+    while esq < dir:
+        lista[esq], lista[dir] = lista[dir], lista[esq]
+        esq += 1
+        dir -= 1
 
 
 def eh_palindromo(lista):
     """True se a lista e igual lida de tras para frente."""
-    pass
+    esq = 0
+    dir = len(lista) - 1
+    while esq < dir:
+        if lista[esq] != lista[dir]:
+            return False
+        esq += 1
+        dir -= 1
+    return True
 
 
 def par_que_soma(lista, alvo):
     """Lista JA ORDENADA. Devolve (i, j) das posicoes cujos valores somam alvo,
     ou (-1, -1). Sem laco dentro de laco."""
-    pass
+    esq = 0
+    dir = len(lista) - 1
+    while esq < dir:
+        soma = lista[esq] + lista[dir]
+        if soma == alvo:
+            return (esq, dir)
+        elif soma < alvo:
+            esq += 1
+        else:
+            dir -= 1
+    return (-1, -1)
 
 
 def soma_maxima_janela(lista, k):
     """Maior soma de k elementos seguidos.
     soma_maxima_janela([1, 2, 3, 4], 2) -> 7"""
-    pass
+    soma_atual = sum(lista[:k])
+    maior_soma = soma_atual
+    for i in range(k, len(lista)):
+        soma_atual += lista[i] - lista[i - k]
+        if soma_atual > maior_soma:
+            maior_soma = soma_atual
+    return maior_soma
 
 
 def parenteses_balanceados(texto):
     """(Desafio) True se os ( ) e [ ] do texto abrem e fecham na ordem certa."""
-    pass
+    pilha = []
+    pares = {')': '(', ']': '['}
+
+    for char in texto:
+        if char in '([':
+            pilha.append(char)
+        elif char in ')]':
+            if not pilha or pilha.pop() != pares[char]:
+                return False
+
+    return len(pilha) == 0
