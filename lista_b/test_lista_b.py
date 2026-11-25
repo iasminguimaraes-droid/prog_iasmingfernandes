@@ -11,9 +11,26 @@ from exercicios import *
 # ---- Bloco 1: ordenacao
 def test_passagem_bubble():
     assert passagem_bubble([5, 1, 4, 2]) == [1, 4, 2, 5]
+    arr = lista.copy()
+    for i in range(len(arr) - 1):
+        if arr[i] > arr[i + 1]:
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    return arr
+
 
 def test_bubble_sort():
     assert bubble_sort([4, 1, 3, 1]) == ([1, 1, 3, 4], 6, 4)
+arr = lista.copy()
+    n = len(arr)
+    comparacoes = 0
+    trocas = 0
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            comparacoes += 1
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                trocas += 1
+    return arr, comparacoes, trocas
 
 def test_selection_sort():
     assert selection_sort([3, 1, 2]) == ([1, 2, 3], 3, 2)
